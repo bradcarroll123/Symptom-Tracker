@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feel Better Fast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--cr:#FAF7F2;--ww:#FFFEFB;--ink:#1A1714;--muted:#6B6560;--gold:#C9A84C;--gl:#E8D5A3;--gp:#FBF5E6;--rose:#C0544B;--sage:#5E8A6E;--blue:#5B7FC4;--border:#EAE5DC}
+body{background:var(--cr);font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+@keyframes slideIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,.5)}70%{box-shadow:0 0 0 8px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
+.wrap{max-width:540px;margin:0 auto;padding:0 20px 80px}
+.hdr{padding:52px 0 44px;text-align:center;position:relative}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 0%,rgba(201,168,76,.11) 0%,transparent 70%);pointer-events:none}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--gp);border:1px solid var(--gl);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;animation:fadeUp .5s ease both}
+.live{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s ease infinite}
+.ttl{font-family:'DM Serif Display',serif;font-size:clamp(34px,9vw,52px);line-height:1.08;letter-spacing:-.02em;animation:fadeUp .5s .08s ease both}
+.ttl em{font-style:italic;color:var(--gold)}
+.sub{margin-top:12px;font-size:15px;color:var(--muted);line-height:1.65;animation:fadeUp .5s .16s ease both}
+.card{background:var(--ww);border-radius:24px;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 8px 48px rgba(26,23,20,.09),0 1px 4px rgba(26,23,20,.05);overflow:hidden;animation:fadeUp .5s .24s ease both;margin-bottom:12px}
+.key-section{padding:20px 26px;border-bottom:1px solid var(--border);background:var(--gp)}
+.key-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.key-row{display:flex;gap:10px;align-items:center}
+.key-input{flex:1;border:1.5px solid var(--gl);border-radius:10px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:var(--ww);outline:none;transition:border-color .2s}
+.key-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12)}
+.key-input::placeholder{color:#C4BFB6}
+.key-save{background:var(--gold);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.key-hint{font-size:11px;color:var(--muted);margin-top:7px;line-height:1.6}
+.key-hint a{color:var(--gold);text-decoration:none;font-weight:600}
+.key-status{font-size:11px;font-weight:600;margin-top:6px}
+.ok{color:var(--sage)}.no{color:var(--rose)}
+.inp{padding:26px 26px 22px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.taw{border-radius:14px;border:1.5px solid var(--border);background:var(--cr);transition:border-color .2s,box-shadow .2s}
+.taw:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.11)}
+textarea{width:100%;background:transparent;border:none;outline:none;resize:none;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:14.5px;color:var(--ink);line-height:1.75}
+textarea::placeholder{color:#C4BFB6}
+.cl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#C4BFB6;margin:14px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--cr);border:1.5px solid var(--border);border-radius:100px;padding:5px 13px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif}
+.chip:active{border-color:var(--gold);color:var(--gold);background:var(--gp)}
+.btn{width:100%;margin-top:18px;padding:15px;border:none;border-radius:13px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
+.bon{background:linear-gradient(135deg,#C9A84C,#B07E3A);color:#fff;box-shadow:0 4px 20px rgba(201,168,76,.38)}
+.boff{background:var(--border);color:#C4BFB6;cursor:not-allowed}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent)}
+.load{padding:28px 26px;display:flex;align-items:flex-start;gap:14px}
+.sp{width:18px;height:18px;border:2px solid var(--gl);border-top-color:var(--gold);border-radius:50%;animation:spin .75s linear infinite;flex-shrink:0;margin-top:2px}
+.lt{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:10px}
+.shl{height:9px;border-radius:100px;margin-bottom:7px;background:linear-gradient(90deg,#EAE5DC 25%,#F5F0E8 50%,#EAE5DC 75%);background-size:600px 100%;animation:shimmer 1.3s ease infinite}
+.err{margin:0 26px 26px;padding:14px 18px;background:rgba(192,84,75,.05);border:1.5px solid rgba(192,84,75,.2);border-radius:12px;font-size:13px;color:var(--rose);font-weight:500;line-height:1.5}
+.res{padding:28px 26px}
+.rh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:22px}
+.rt{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.2}
+.badge{background:var(--gp);border:1px solid var(--gl);border-radius:100px;padding:4px 12px;font-size:10px;font-weight:600;color:var(--gold);white-space:nowrap;flex-shrink:0;letter-spacing:.08em;text-transform:uppercase}
+.blk{margin-bottom:13px;padding:18px 20px;border-radius:14px;background:var(--cr);border:1.5px solid var(--border);animation:slideIn .4s ease both}
+.blk:nth-child(1){animation-delay:.00s}.blk:nth-child(2){animation-delay:.06s}.blk:nth-child(3){animation-delay:.12s}.blk:nth-child(4){animation-delay:.18s}.blk:nth-child(5){animation-delay:.24s}
+.bh{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.bb{font-size:14px;line-height:1.78;color:var(--ink)}
+.bb ul{list-style:none;padding:0}
+.bb li{padding:3px 0 3px 18px;position:relative}
+.bb li::before{content:'—';position:absolute;left:0;color:var(--gold);font-weight:700}
+.disc{margin-top:20px;padding:14px 18px;background:rgba(192,84,75,.05);border:1.5px solid rgba(192,84,75,.17);border-radius:13px;font-size:12px;color:var(--rose);line-height:1.65;font-weight:500}
+.foot{text-align:center;padding:28px 0 0;font-size:11.5px;color:#C4BFB6;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <div class="pill"><div class="live"></div>AI Health Assistant</div>
+    <h1 class="ttl">Feel Better,<br><em>Faster.</em></h1>
+    <p class="sub">Describe your symptoms and get<br>personalised medicine guidance instantly.</p>
+  </div>
+
+  <div class="card">
+    <!-- API KEY -->
+    <div class="key-section">
+      <div class="key-lbl">🔑 OpenRouter API Key (Free)</div>
+      <div class="key-row">
+        <input class="key-input" type="password" id="apiKey" placeholder="sk-or-v1-..."/>
+        <button class="key-save" onclick="saveKey()">Save</button>
+      </div>
+      <div class="key-hint">
+        Get your <strong>free</strong> key at <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a> — sign up with Google, click "Create Key". Free models cost $0. No credit card needed.
+      </div>
+      <div id="keyStatus" class="key-status no">⚠ No key saved</div>
+    </div>
+
+```
+<!-- INPUT -->
+<div class="inp">
+  <div class="lbl">Describe your symptoms</div>
+  <div class="taw">
+    <textarea id="symptoms" rows="4" placeholder="e.g. Throbbing headache, slight fever, sore throat since this morning…"></textarea>
+  </div>
+  <div class="cl">Quick fill</div>
+  <div class="chips" id="chips"></div>
+  <button class="btn boff" id="submitBtn" onclick="analyze()">Analyze Symptoms →</button>
+</div>
+
+<div id="loading" style="display:none">
+  <div class="div"></div>
+  <div class="load">
+    <div class="sp"></div>
+    <div style="flex:1">
+      <div class="lt">Analyzing your symptoms…</div>
+      <div class="shl" style="width:78%"></div>
+      <div class="shl" style="width:55%"></div>
+      <div class="shl" style="width:68%;margin-bottom:0"></div>
+    </div>
+  </div>
+</div>
+
+<div id="errorBox" style="display:none" class="err"></div>
+
+<div id="result" style="display:none">
+  <div class="div"></div>
+  <div class="res">
+    <div class="rh">
+      <div class="rt">Your Health<br>Recommendations</div>
+      <div class="badge">✦ AI Analysis</div>
+    </div>
+    <div id="blocks"></div>
+    <div class="disc" id="disclaimer"></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="foot">For informational purposes only · Not a substitute for professional medical advice</div>
+</div>
+
+<script>
+var CHIPS = ["Headache & fever","Sore throat","Runny nose","Nausea","Back pain","Allergies","Fatigue","Cough","Heartburn"];
+var SECTIONS = [
+  {keys:["WHAT IS HAPPENING","GOING ON","HAPPENING"],  icon:"🩺", color:"#5E8A6E", label:"What's Happening"},
+  {keys:["OTC MEDICINES","OTC","OVER-THE-COUNTER"],    icon:"💊", color:"#C9A84C", label:"OTC Medicines"},
+  {keys:["PRESCRIPTION"],                              icon:"📋", color:"#5B7FC4", label:"Prescription Options"},
+  {keys:["NATURAL","HERBAL","HOME REMED"],             icon:"🌿", color:"#5E8A6E", label:"Natural Remedies"},
+  {keys:["WHEN TO SEE","DOCTOR","EMERGENCY"],          icon:"⚠️", color:"#C0544B", label:"When to See a Doctor"},
+];
+
+// Chips
+var chipEl = document.getElementById("chips");
+CHIPS.forEach(function(c) {
+  var b = document.createElement("button");
+  b.className = "chip"; b.textContent = c;
+  b.onclick = function(){ document.getElementById("symptoms").value = c; updateBtn(); };
+  chipEl.appendChild(b);
+});
+
+window.onload = function() {
+  var k = localStorage.getItem("or_key");
+  if (k) { document.getElementById("apiKey").value = k; setStatus(true); }
+  document.getElementById("symptoms").oninput = updateBtn;
+  updateBtn();
+};
+
+function saveKey() {
+  var k = document.getElementById("apiKey").value.trim();
+  if (!k) { setStatus(false); return; }
+  localStorage.setItem("or_key", k);
+  setStatus(true); updateBtn();
+}
+
+function setStatus(ok) {
+  var el = document.getElementById("keyStatus");
+  el.textContent = ok ? "✓ Key saved — ready to go!" : "⚠ No key saved";
+  el.className = "key-status " + (ok ? "ok" : "no");
+}
+
+function updateBtn() {
+  var ok = !!localStorage.getItem("or_key") && document.getElementById("symptoms").value.trim().length > 0;
+  var b = document.getElementById("submitBtn");
+  b.className = "btn " + (ok ? "bon" : "boff");
+  b.disabled = !ok;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function parseBlocks(text) {
+  var out = [], cur = null;
+  text.split("\n").forEach(function(raw) {
+    var line = raw.trim();
+    if (!line) return;
+    var up = line.toUpperCase();
+    var sec = null;
+    for (var j = 0; j < SECTIONS.length; j++) {
+      for (var k = 0; k < SECTIONS[j].keys.length; k++) {
+        if (up.indexOf(SECTIONS[j].keys[k]) !== -1 && line.length < 80) { sec = SECTIONS[j]; break; }
+      }
+      if (sec) break;
+    }
+    if (sec) {
+      if (cur) out.push(cur);
+      cur = {icon:sec.icon, color:sec.color, label:sec.label, lines:[]};
+    } else if (cur) {
+      var clean = line.replace(/^[-–•*#]+\s*/,"").replace(/^\d+\.\s*/,"").replace(/\*\*/g,"").trim();
+      if (clean && clean.toUpperCase().indexOf("DISCLAIMER") === -1) cur.lines.push(clean);
+    }
+  });
+  if (cur && cur.lines.length) out.push(cur);
+  return out;
+}
+
+function renderResult(text) {
+  var el = document.getElementById("blocks");
+  el.innerHTML = "";
+  var dm = text.match(/DISCLAIMER[:\s]+([\s\S]+)/i);
+  document.getElementById("disclaimer").textContent = "⚕️ " + (dm ? dm[1].trim() : "General information only — not a substitute for professional medical advice.");
+  var blocks = parseBlocks(text);
+  if (!blocks.length) {
+    var d = document.createElement("div"); d.className = "blk";
+    d.innerHTML = '<div class="bb"><p style="white-space:pre-wrap">' + esc(text) + '</p></div>';
+    el.appendChild(d); return;
+  }
+  blocks.forEach(function(b) {
+    var d = document.createElement("div"); d.className = "blk";
+    var items = b.lines.length > 1
+      ? "<ul>" + b.lines.map(function(l){ return "<li>"+esc(l)+"</li>"; }).join("") + "</ul>"
+      : "<p>" + esc(b.lines[0]||"") + "</p>";
+    d.innerHTML = '<div class="bh" style="color:'+b.color+'"><span>'+b.icon+'</span>'+esc(b.label)+'</div><div class="bb">'+items+'</div>';
+    el.appendChild(d);
+  });
+}
+
+function showErr(msg) {
+  var el = document.getElementById("errorBox");
+  el.innerHTML = "⚠️ " + esc(msg);
+  el.style.display = "block";
+}
+
+function setLoading(on) {
+  document.getElementById("loading").style.display = on ? "block" : "none";
+  var b = document.getElementById("submitBtn");
+  b.disabled = on; b.textContent = on ? "Analyzing…" : "Analyze Symptoms →";
+  if (!on) updateBtn(); else b.className = "btn boff";
+}
+
+function analyze() {
+  var key = localStorage.getItem("or_key");
+  var sym = document.getElementById("symptoms").value.trim();
+  if (!key || !sym) return;
+
+  setLoading(true);
+  document.getElementById("result").style.display = "none";
+  document.getElementById("errorBox").style.display = "none";
+
+  var prompt = "You are a helpful medical information assistant.\n" +
+    "The user has these symptoms: " + sym + "\n\n" +
+    "Respond using EXACTLY these five section headers, each on its own line:\n\n" +
+    "WHAT IS HAPPENING\n" +
+    "OTC MEDICINES\n" +
+    "PRESCRIPTION OPTIONS\n" +
+    "NATURAL REMEDIES\n" +
+    "WHEN TO SEE A DOCTOR\n\n" +
+    "Under WHAT IS HAPPENING: write 1-2 plain sentences.\n" +
+    "Under all other headers: list items starting with a dash (-).\n" +
+    "End with: DISCLAIMER: This is general information only, not a substitute for professional medical advice.";
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://openrouter.ai/api/v1/chat/completions", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Authorization", "Bearer " + key);
+  xhr.setRequestHeader("HTTP-Referer", window.location.href);
+  xhr.setRequestHeader("X-Title", "Feel Better Fast");
+
+  xhr.onload = function() {
+    setLoading(false);
+    try {
+      var data = JSON.parse(xhr.responseText);
+      if (xhr.status !== 200) {
+        var msg = (data.error && data.error.message) ? data.error.message : "Error " + xhr.status;
+        showErr(msg); return;
+      }
+      var text = data.choices[0].message.content;
+      if (!text || !text.trim()) { showErr("Empty response. Please try again."); return; }
+      renderResult(text.trim());
+      document.getElementById("result").style.display = "block";
+      setTimeout(function(){ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"}); }, 80);
+    } catch(e) {
+      showErr("Could not read response. Please try again.");
+    }
+  };
+
+  xhr.onerror = function() {
+    setLoading(false);
+    showErr("Network error. Please check your connection and try again.");
+  };
+
+  xhr.send(JSON.stringify({
+    model: "google/gemini-2.0-flash-exp:free",
+    messages: [{ role: "user", content: prompt }]
+  }));
+}
+</script>
+
+</body>
+</html>
